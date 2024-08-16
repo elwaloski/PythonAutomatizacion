@@ -1,0 +1,65 @@
+{
+    "AliasHots":
+    {
+        "Directorio": "C:\\Program Files (x86)\\DBNET\\UpdateHost\\Dbnetcorp.Infra.UpdateHost.exe.config"
+    },
+    "ConexionBD":
+    {
+        "Servidor": "bd02.cb6iwwym0wyl.us-east-1.rds.amazonaws.com",
+        "Usuario": "admin",
+        "Contrasena": "6Yyq9X62nz0q",
+        "BaseDatos": "cert_prod"
+    },
+    "Sitios":
+	{
+        "Entrada":"-uat.",
+        "Salida":"-qa.",
+        "EntradaWss":"-uatwss.",
+        "SalidaWss":"-qa-wss.",
+		"Extensiones": [".config", ".json"],    
+		"Rutas": 
+			[
+				"D:\\DBNeT-FE\\cl\\fe62sql\\webapps\\SE62",
+				"D:\\websuite50",
+				"D:\\AplicacionesWeb\\lce\\dbnetLCE",
+				"D:\\AplicacionesWeb\\lce\\dbnLCE",
+				"D:\\AplicacionesWeb\\lce48\\dbnetLCE",
+				"D:\\AplicacionesWeb\\lce48\\dbnLCE",
+				"D:\\AplicacionesWeb",
+				"E:\\GDTE\\gdteCL\\webapps\\GestionDTE",
+				"E:\\GDTE\\gdteCL\\WSS\\rsWssConsultaFEBHSura",
+				"E:\\GDTE\\gdteCL\\WSS\\wssSupplierDocCedEsta",
+				"E:\\GDTE\\gdteCL\\WSS\\wssSupplierNoReciFE"		
+				
+			],
+        "NombreBat":"IISCambio_uat_QA.bat"
+	},
+    "ServiciosWindows":
+    {
+        "IpMTA": "172.33.1.6",
+        "IpLocal": "172.33.1.70",
+        "Ruta": "D:\\DBNeT-FE\\cl\\fe62sql\\apps\\home\\bin",
+        "Servicios":
+        [
+            {
+                "Nombre": "DBNetServiceMailOutboxNotifySB",
+                "Bat":"DBNetServiceMailOutboxNotifySB.bat"
+            },
+            {
+                "Nombre": "DBNetMailInboxWS",
+                "Bat": "DBNetMailInboxWS.bat"
+            },
+            {
+                "Nombre": "DBNetDocuWS01",
+                "Bat": "Wss_Documentos.bat"
+            }
+            
+        ]
+    },
+    "Limpieza":
+    {
+        "ExtensionesLimpieza": [".log"],
+        "RutasLimpieza": ["C:\\","D:\\","E:\\","H:\\"],
+        "DiasAEliminar":"7"
+    }
+}
