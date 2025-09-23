@@ -1,0 +1,3 @@
+SoloAudio 0
+SoloVideo 0
+Audio&Video 1
