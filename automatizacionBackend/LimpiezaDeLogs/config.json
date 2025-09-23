@@ -1,0 +1,8 @@
+{
+    "limpieza":
+    {
+        "extensiones": [".log"],
+        "rutas": ["C:\\","D:\\","E:\\","H:\\"],
+        "DiasAEliminar":"7"
+    }
+}

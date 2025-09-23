@@ -1,0 +1,17 @@
+2024-10-07 09:13:05,977 - Servicio Activo
+2024-10-07 09:13:05,977 - Leyendo archivo de configuracion
+2024-10-07 09:13:05,977 - Directorio a buscar: D:\prueba
+2024-10-07 09:13:05,977 - Directorio a buscar: D:\prueba\prueba
+2024-10-07 09:15:17,570 - Servicio Activo
+2024-10-07 09:15:17,570 - Leyendo archivo de configuracion
+2024-10-07 09:15:17,570 - Directorio a buscar: C:\
+2024-10-07 09:15:17,617 - No se pudo eliminar el archivo C:\Boot\BCD.LOG: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Boot\\BCD.LOG'
+2024-10-07 09:15:26,570 - Archivo eliminado: C:\System Volume Information\tracking.log
+2024-10-07 09:16:39,244 - No se pudo eliminar el archivo C:\Windows\System32\MsDtc\MSDTC.LOG: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Windows\\System32\\MsDtc\\MSDTC.LOG'
+2024-10-07 09:16:50,963 - No se pudo eliminar el archivo C:\Windows\WinSxS\amd64_microsoft-windows-com-dtc-runtime_31bf3856ad364e35_10.0.17763.1_none_0a18eccab82c677e\MSDTC.LOG: [WinError 5] Access is denied: 'C:\\Windows\\WinSxS\\amd64_microsoft-windows-com-dtc-runtime_31bf3856ad364e35_10.0.17763.1_none_0a18eccab82c677e\\MSDTC.LOG'
+2024-10-07 09:16:50,963 - No se pudo eliminar el archivo C:\Windows\WinSxS\amd64_microsoft-windows-com-dtc-runtime_31bf3856ad364e35_10.0.17763.5830_none_66acff4c31f8a77f\MSDTC.LOG: [WinError 5] Access is denied: 'C:\\Windows\\WinSxS\\amd64_microsoft-windows-com-dtc-runtime_31bf3856ad364e35_10.0.17763.5830_none_66acff4c31f8a77f\\MSDTC.LOG'
+2024-10-07 09:16:58,088 - No se pudo eliminar el archivo C:\Windows\WinSxS\amd64_tsportalwebpart_31bf3856ad364e35_10.0.17763.1_none_255bdc0b47c49755\allusers_tswa.log: [WinError 5] Access is denied: 'C:\\Windows\\WinSxS\\amd64_tsportalwebpart_31bf3856ad364e35_10.0.17763.1_none_255bdc0b47c49755\\allusers_tswa.log'
+2024-10-07 09:16:58,104 - No se pudo eliminar el archivo C:\Windows\WinSxS\amd64_tsportalwebpart_31bf3856ad364e35_10.0.17763.5830_none_81efee8cc190d756\allusers_tswa.log: [WinError 5] Access is denied: 'C:\\Windows\\WinSxS\\amd64_tsportalwebpart_31bf3856ad364e35_10.0.17763.5830_none_81efee8cc190d756\\allusers_tswa.log'
+2024-10-07 09:17:12,919 - No se pudo eliminar el archivo C:\Windows\WinSxS\msil_microsoft-windows-n..ontroller-framework_31bf3856ad364e35_10.0.17763.1_none_167764186edb25b6\edb00000001.log: [WinError 5] Access is denied: 'C:\\Windows\\WinSxS\\msil_microsoft-windows-n..ontroller-framework_31bf3856ad364e35_10.0.17763.1_none_167764186edb25b6\\edb00000001.log'
+2024-10-07 09:17:12,934 - No se pudo eliminar el archivo C:\Windows\WinSxS\msil_microsoft-windows-n..ontroller-framework_31bf3856ad364e35_10.0.17763.3650_none_73231339e8956635\edb00000001.log: [WinError 5] Access is denied: 'C:\\Windows\\WinSxS\\msil_microsoft-windows-n..ontroller-framework_31bf3856ad364e35_10.0.17763.3650_none_73231339e8956635\\edb00000001.log'
+2024-10-07 09:17:50,840 - Directorio a buscar: D:\
