@@ -1,0 +1,12 @@
+{
+    "Configuracion1":
+    {
+        "PING1":"xxxxxxxxxxxxxxx.rds.amazonaws.com",
+        "NombreVariable1": "BDCLOUD"
+    },
+    "Configuracion2":
+    {
+        "PING2":"xxxxxxxxx-1.rds.amazonaws.com",
+        "NombreVariable2": "BDCLOUD2"
+    }
+}
