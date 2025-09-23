@@ -1,13 +1,23 @@
 {
-    "AliasHots":
+    "Activar":
     {
-        "Directorio": "C:\\Program Files (x86)\\Ruta\\UpdateHost\\Dbnetcorp.Infra.UpdateHost.exe.config"
+        "CopiarArchivos":"SI",
+        "ConfigurarAliasRDS": "NO",
+        "EjecutarScriptsBD": "NO",
+        "ActualizarRutas": "NO",
+        "ActualizarSitios": "NO",
+        "CambiosIP":"NO",
+        "LimpiezaLogs":"NO"
+    },
+    "AliasHost":
+    {
+        "Directorio": "C:\\Program Files (x86)\\xxxxxxxxxxx\\UpdateHost\\Dbnetcorp.Infra.UpdateHost.exe.config"
     },
     "ConexionBD":
     {
-        "Servidor": "xxxxx.xxxxxx.us-east-1.rds.amazonaws.com",
+        "Servidor": "xxxxxxxx.rds.amazonaws.com",
         "Usuario": "admin",
-        "Contrasena": "xxxxxxxx",
+        "Contrasena": "xxxxxxx",
         "BaseDatos": "cert_prod"
     },
     "Sitios":
@@ -19,35 +29,32 @@
 		"Extensiones": [".config", ".json"],    
 		"Rutas": 
 			[
-				"D:\\xxxxxxxx\\cl\\fe62sql\\webapps\\xxxxxxx",
-				"D:\\websxxxxxxuite50",
-				"D:\\xxxxxx\\lce\\xxxxxx",
-				"D:\\xxxxxx\\lce\\xxxxxx",
-				"D:\\xxxxxxx\\lce48\\xxxxx",
-				"D:\\xxxxxxxx\\lce48\\xxxxxx",
-				"D:\\xxxxxxx",
-				"E:\\xxxxxx\\gdteCL\\webapps\\xxxxxx",
-				"E:\\xxxxxx\\gdteCL\\WSS\\xxxxxxx",
-				"E:\\xxxxxx\\gdteCL\\WSS\\xxxxxxx",
-				"E:\\GDTxxxxE\\gdteCL\\WSS\\xxxxxxxxx"		
+				"D:\\xxxxxx\\cl\\fe62sql\\webapps\\xxxxx",
+				"D:\\websuite50",
+				"D:\\AplicacionesWeb\\lce\\xxxx",
+				"D:\\AplicacionesWeb\\lce\\xxxxx",
+				"D:\\AplicacionesWeb\\lce48\\xxxxxx",
+				"D:\\AplicacionesWeb\\lce48\\xxxxxxx",
+				"D:\\AplicacionesWeb",
+				"E:\\GDTE\\gdteCL\\webapps\\xxxxxxx",
+				"E:\\GDTE\\gdteCL\\WSS\\xxxxxxx",
+				"E:\\GDTE\\gdteCL\\WSS\\xxxxxx",
+				"E:\\GDTE\\gdteCL\\WSS\\xxxxx"		
 				
-			],
-        "NombreBat":"IISCambio_uat_QA.bat"
+			]
 	},
     "ServiciosWindows":
     {
-        "IpMTA": "172.33.1.0",
-        "IpLocal": "172.33.1.70",
-        "Ruta": "D:\\xxxxx\\cl\\xxxxx\\apps\\home\\bin",
+        "IpMTA": "172.33.1.6",
         "Servicios":
         [
             {
-                "Nombre": "xxxxxxServiceMailOutboxNotifySB",
+                "Nombre": "xxxxxServiceMailOutboxNotifySB",
                 "Bat":"xxxxxServiceMailOutboxNotifySB.bat"
             },
             {
-                "Nombre": "xxxxxMailInboxWS",
-                "Bat": "xxxxxMailInboxWS.bat"
+                "Nombre": "xxxxxxMailInboxWS",
+                "Bat": "xxxxxxMailInboxWS.bat"
             },
             {
                 "Nombre": "xxxxxxDocuWS01",

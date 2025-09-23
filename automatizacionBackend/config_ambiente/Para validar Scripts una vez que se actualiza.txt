@@ -1,0 +1,58 @@
+Para validar scripts se debe colocar como variable set @serv_serv = 'W-FECUAT-QA2' en el archivo script_usuarios.sql
+
+ejecutar lo siguente antes en la BD
+------------------------------------------------------------
+use cert_prod
+delete DBN_MONI_PROC where serv_serv='W-FECUAT-QA'
+delete dbn_serv_srvd where serv_serv='W-FECUAT-QA2'
+delete dbn_sesr_rang_oper where CODI_SRVD='W-FECUAT-QA2'
+delete dbn_servidor where serv_serv='W-FECUAT-QA2'
+GO
+use cf_cl_cert
+DROP USER cf_uat_app
+DROP USER fe_uat_app
+DROP USER lce_uat_app
+GO
+use cert_prod
+DROP USER cf_uat_app
+DROP USER fe_uat_app
+DROP USER lce_uat_app
+GO
+use lce_cl_cert
+DROP USER cf_uat_app
+DROP USER fe_uat_app
+DROP USER lce_uat_app
+estos ultimo puede que arrojen error lo cual es correcto ya que los usuario no estan asignados a esas BD
+-------------------------------------------------------------
+Ejecutar Programa de automatizacion con la siguente configuracion en el config.json
+
+        "ConfigurarAliasRDS": "NO",
+        "EjecutarScriptsBD": "SI",
+        "ActualizarSitios": "NO",
+        "CambiosIP":"NO",
+        "LimpiezaLogs":"NO"
+
+-----------------------
+una vez ya ejecutado validar 
+
+ir a  
+https://cf-qa.cl.xxxxxxxxx/GestionDTE/xxxxxxxx
+user:78079790
+pass:CrA48I96
+
+si ingreso correcto la primera parte del scripts se ejecuto bien
+
+luego ejecutar
+select *from dbn_serv_srvd where serv_serv='W-FECUAT-QA2'
+select *from dbn_sesr_rang_oper where CODI_SRVD='W-FECUAT-QA2'
+select *from dbn_servidor where serv_serv='W-FECUAT-QA2'
+
+si trae informacion quiere decir que se ejecuto correctamente la segunda parte del scripts
+
+Luego Borrar
+use cert_prod
+delete DBN_MONI_PROC where serv_serv='W-FECUAT-QA2'
+delete dbn_serv_srvd where serv_serv='W-FECUAT-QA2'
+delete dbn_sesr_rang_oper where CODI_SRVD='W-FECUAT-QA2'
+delete dbn_servidor where serv_serv='W-FECUAT-QA2'
+

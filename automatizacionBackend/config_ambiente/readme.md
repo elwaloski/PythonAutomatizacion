@@ -15,7 +15,7 @@ Es un programa que automatiza la configuración del ambiente de QA entregado por
    
 ### Importante!!!
 Debido a permisos de la empresa puede que no se nos permita agregar la path de la libreria por lo cual el comando seria el siguiente(recuerda cambiar usuario): 
-C:\Users\{usuario}\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\pyinstaller.exe --name ConfgiAmbiente --onefile main.py
+C:\Users\{usuario}\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\pyinstaller.exe --name ConfigAmbiente --onefile main.py
 
 ## Instalación
 1. Generar una carpeta que contenga la siguiente estructura

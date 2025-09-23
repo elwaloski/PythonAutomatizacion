@@ -8,6 +8,10 @@ import time
 import shutil 
 import ctypes
 import sys
+import socket
+import chardet
+import shutil
+import os
 
 def Configurar_Alias_Rds(servidor,Directorio):
     try:
@@ -88,13 +92,19 @@ def Configurar_Sitios_Webs_Wss_Apis_Etc(rutas,extensiones,Entrada,Salida,Entrada
 
                     file_path = os.path.join(root, filename)
                     logging.info(f"Leyendo archivo: {file_path}" )
-                    with open(file_path, "r", encoding="utf-8") as file:
+
+                    #detectando el encoding del archivo
+                    with open(file_path, 'rb') as file:
+                        resultado = chardet.detect(file.read())
+                        encoding_detectado = resultado['encoding']
+
+                    with open(file_path, "r", encoding=encoding_detectado) as file:
                         content = file.read()
 
                     new_content = content.replace(f"{Entrada}", f"{Salida}").replace(f"{EntradaWss}", f"{SalidaWss}") 
                     
                     if new_content != content:
-                        with open(file_path, "w", encoding="utf-8") as file:
+                        with open(file_path, "w", encoding=encoding_detectado) as file:
                             file.write(new_content)
                         logging.info(f"Se ha modificado el siguiente archivo: {file_path}")
         #reiniciar iis
@@ -107,23 +117,26 @@ def Configurar_Sitios_Webs_Wss_Apis_Etc(rutas,extensiones,Entrada,Salida,Entrada
     except Exception as e:
         logging.error(f"Error: {e}")
 
-#configurar servicios windows
 def Configurar_Servicios_Windows(serviciosWindows):
     try:
         print("Configurando bats de servicios windows")
         logging.info("Se inicia la configuracion de los Servicios Windows")
         ip_mta = serviciosWindows["IpMTA"]
-        ip_local = serviciosWindows["IpLocal"]
-        ruta = serviciosWindows["Ruta"]
         servicios = serviciosWindows["Servicios"]
+        ip_local = socket.gethostbyname(socket.gethostname()) 
+        ruta = os.path.join(os.environ.get("Homedir"), "bin")
+        logging.info(f"Ip del MTA: {ip_mta}")
+        logging.info(f"Ip local: {ip_local}")
+        logging.info(f"Path servicios: {ruta}")
 
-        #leer archivo bat
+        #recorrer servicios configurados
         for servicio in servicios:
+            #leer archivo bat
             bat = servicio["Bat"]
             with open(f"{ruta}\\{bat}", "r") as file:
                 lines = file.readlines()
         
-            #reemplazar valores de archivo
+            #reemplazar valores de archivo bat
             with open(f"{ruta}\\{bat}", "w", encoding='utf-8') as file:
                 for line in lines:
                     if line.startswith("set IP="):
@@ -137,22 +150,23 @@ def Configurar_Servicios_Windows(serviciosWindows):
             #reiniciar los servicios windows
             nombre_servicio = servicio["Nombre"]
             comando_detener = f"net stop {nombre_servicio}"
-            proceso = subprocess.run(comando_detener, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            subprocess.run(comando_detener, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             logging.info(f"servicio: {nombre_servicio} - detenido")
 
             comando_iniciar = f"net start {nombre_servicio}"
-            proceso = subprocess.run(comando_iniciar, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            subprocess.run(comando_iniciar, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             logging.info(f"servicio: {nombre_servicio} - iniciado")
 
     except Exception as e:
         logging.error(f"Error Servicios Windows: {e}")
 
-
-def OtrasConfig(serviciosWindows):
+def OtrasConfig():
     try:
-        ip_local = serviciosWindows["IpLocal"]
         logging.info("Se comienza con la modificacion del archivo sendJson.bat")
+        ip_local = socket.gethostbyname(socket.gethostname()) 
         path = os.path.join(os.environ.get("homedir"), "bin\\sendJson.bat")
+        logging.info(f"Ip local: {ip_local}")
+        logging.info(f"Path sendJson: {path}")
         with open(path, "r") as file:
             lines = file.readlines()
 
@@ -169,48 +183,49 @@ def OtrasConfig(serviciosWindows):
 
 
     #configuracion de bd
-def Configuracion_De_Bd(servidor,usuario,contrasena,bd):
+
+def Configuracion_De_Bd(servidor, usuario, contrasena, bd):
     conexion = None
     cursor = None
     try:
-        print("Ejecutando script de usuarios en BD")
+        logging.info("Ejecutando script de usuarios en BD")
         logging.info("Comienza con la conexion y configuracion de la BD")
         logging.info(f"servidor: {servidor}")
         logging.info(f"usuario: {usuario}")
-        logging.info(f"contraseña: {contrasena}")
         logging.info(f"base de datos: {bd}")
 
+        # Conexión a la base de datos
         conexion = pyodbc.connect(f'DRIVER=SQL Server;SERVER={servidor};DATABASE={bd};UID={usuario};PWD={contrasena}')
         cursor = conexion.cursor()
-        logging.info("Conexion a BD realizada correctamente")
+        logging.info("Conexión a BD realizada correctamente")
+        print ("Conexión a BD realizada correctamente")
 
-        #ejectuar script usuarios
-        logging.info("Se comienza con la lectura y ejecucion del script")
+        # Leer y ejecutar el script SQL
+        logging.info("Se comienza con la lectura y ejecución del script")
         with open("script_usuarios.sql", "r") as file:
             sql_script = file.read()
         
-        comandos = sql_script.split('GO')
+        comandos = sql_script.split('GO')  # Dividir el script en comandos por 'GO'
 
         for comando in comandos:
             if comando.strip():
                 cursor.execute(comando)
                 conexion.commit()
-        # cursor.execute(sql_script)
-        # conexion.commit()
-        logging.info("Se ejecuta el script correctamente en BD")
+        
+        logging.info("Se ejecutó el script correctamente en la BD")
 
     except pyodbc.DatabaseError as e:
-        logging.error(f"Error en BD: {e}")
+        logging.error(f"Error en la base de datos: {e}")
     except pyodbc.InterfaceError as e:
-        logging.error(f"Error en BD: {e}")
+        logging.error(f"Error en la interfaz de la base de datos: {e}")
     except Exception as e:
-        logging.error(f"Error: {e}")
+        logging.error(f"Error inesperado: {e}")
     finally:
-        if cursor is not None:
+        if cursor:
             cursor.close()
-        if conexion is not None:
+        if conexion:
             conexion.close()
-        logging.info("La conexion a BD se ha cerrado de manera correcta")
+        logging.info("La conexión a la base de datos se ha cerrado de manera correcta")
 
 def CrearLogs():
     if not os.path.exists("logs"):
@@ -222,20 +237,79 @@ def CrearLogs():
     fecha_actual = datetime.datetime.now().strftime("%Y-%m-%d_%H%M%S")
     logging.basicConfig(
         filename=f"logs/log_{fecha_actual}.log",
-        level=logging.DEBUG,
+        level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S"
     )
-def ejecutar_bat_como_administrador(ruta_bat):
+
+def ejecutar_bat_como_administrador(old_host, new_host,old_hostWSS, new_hostWSS):
+    # Crear un archivo .bat temporal con las instrucciones adicionales
+    bat_content = f"""
+    set OldHost=fe{old_host.rstrip(".")}-admin.cl.dbnetcorp.com
+    set NewHost=fe{new_host.rstrip(".")}-admin.cl.dbnetcorp.com
+    powershell -Command "& {{Import-Module WebAdministration; Rename-Item 'IIS:\\Sites\\%OldHost%' %NewHost%}}"
+    powershell -Command "& {{Import-Module WebAdministration; Set-WebBinding -Name %NewHost% -BindingInformation '*:80:%OldHost%' -PropertyName HostHeader -Value %NewHost%}}"
+    powershell -Command "& {{Import-Module WebAdministration; Set-WebBinding -Name %NewHost% -BindingInformation '*:443:%OldHost%' -PropertyName HostHeader -Value %NewHost%}}"
+        
+    set OldHost=cf{old_host}cl.dbnetcorp.com
+    set NewHost=cf{new_host}cl.dbnetcorp.com
+    powershell -Command "& {{Import-Module WebAdministration; Rename-Item "IIS:\Sites\%OldHost%" %NewHost%}}"&
+    powershell -Command "& {{Import-Module WebAdministration; Set-WebBinding -Name %NewHost% -BindingInformation '*:80:%OldHost%' -PropertyName HostHeader -Value %NewHost%}}"&
+    powershell -Command "& {{Import-Module WebAdministration; Set-WebBinding -Name %NewHost% -BindingInformation '*:443:%OldHost%' -PropertyName HostHeader -Value %NewHost%}}"&
+
+    set OldHost=fe{old_host}cl.dbnetcorp.com
+    set NewHost=fe{new_host}cl.dbnetcorp.com
+    powershell -Command "& {{Import-Module WebAdministration; Rename-Item "IIS:\Sites\%OldHost%" %NewHost%}}"&
+    powershell -Command "& {{Import-Module WebAdministration; Set-WebBinding -Name %NewHost% -BindingInformation '*:443:%OldHost%' -PropertyName HostHeader -Value %NewHost%}}"&
+
+    set OldHost=fe{old_hostWSS}cl.dbnetcorp.com
+    set NewHost=fe{new_hostWSS}cl.dbnetcorp.com
+    powershell -Command "& {{Import-Module WebAdministration; Rename-Item "IIS:\Sites\%OldHost%" %NewHost%}}"&
+    powershell -Command "& {{Import-Module WebAdministration; Set-WebBinding -Name %NewHost% -BindingInformation '*:80:%OldHost%' -PropertyName HostHeader -Value %NewHost%}}"&
+    powershell -Command "& {{Import-Module WebAdministration; Set-WebBinding -Name %NewHost% -BindingInformation '*:443:%OldHost%' -PropertyName HostHeader -Value %NewHost%}}"&
+
+    set OldHost=lce{old_host}cl.dbnetcorp.com
+    set NewHost=lce{new_host}cl.dbnetcorp.com
+    powershell -Command "& {{Import-Module WebAdministration; Rename-Item "IIS:\Sites\%OldHost%" %NewHost%}}"&
+    powershell -Command "& {{Import-Module WebAdministration; Set-WebBinding -Name %NewHost% -BindingInformation '*:80:%OldHost%' -PropertyName HostHeader -Value %NewHost%}}"&
+    powershell -Command "& {{Import-Module WebAdministration; Set-WebBinding -Name %NewHost% -BindingInformation '*:443:%OldHost%' -PropertyName HostHeader -Value %NewHost%}}"&
+    exit&
+    exit
+    """
+    logging.info("Se crea Archivo de Cambio de sitios y Binding")
+    # Crea un archivo .bat temporal si no se proporciona ruta_bat
+    ruta_bat = os.path.join(os.path.dirname(__file__), "temp_script.bat")
+    with open(ruta_bat, 'w') as archivo_bat:
+        archivo_bat.write(bat_content)
+
     # Verificar si el script está siendo ejecutado como administrador
     if not ctypes.windll.shell32.IsUserAnAdmin():
         # Si no es administrador, solicitar elevación
         print("Solicitando privilegios de administrador...")
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, f'"{__file__}"', None, 1)
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, f'"{__file__}" "{ruta_bat}"', None, 1)
     else:
         # Ejecutar el archivo .bat como administrador
         try:
             subprocess.run(['cmd', '/c', ruta_bat], check=True)
             print("Script .bat ejecutado exitosamente.")
+            logging.info("Script .bat ejecutado exitosamente. Cambio de sitios y Binding")
         except subprocess.CalledProcessError as e:
             print(f"Error al ejecutar el script .bat: {e}")
+            logging.info(f"Error al ejecutar el script .bat: {e}")
+
+def copiar_archivo(ruta_origen, ruta_destino):
+    try:
+        # Verifica si el archivo origen existe
+        if not os.path.isfile(ruta_origen):
+            raise FileNotFoundError(f"El archivo origen no existe: {ruta_origen}")
+        # Copia el archivo
+        shutil.copy(ruta_origen, ruta_destino)
+        print(f"Archivo copiado de {ruta_origen} a {ruta_destino}")
+
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+    except PermissionError:
+        print(f"Error: Permiso denegado para copiar el archivo.")
+    except Exception as e:
+        print(f"Error inesperado: {e}")
+
