@@ -1,13 +1,13 @@
 {
     "AliasHots":
     {
-        "Directorio": "C:\\Program Files (x86)\\DBNET\\UpdateHost\\Dbnetcorp.Infra.UpdateHost.exe.config"
+        "Directorio": "C:\\Program Files (x86)\\Ruta\\UpdateHost\\Dbnetcorp.Infra.UpdateHost.exe.config"
     },
     "ConexionBD":
     {
-        "Servidor": "bd02.cb6iwwym0wyl.us-east-1.rds.amazonaws.com",
+        "Servidor": "xxxxx.xxxxxx.us-east-1.rds.amazonaws.com",
         "Usuario": "admin",
-        "Contrasena": "6Yyq9X62nz0q",
+        "Contrasena": "xxxxxxxx",
         "BaseDatos": "cert_prod"
     },
     "Sitios":
@@ -19,38 +19,38 @@
 		"Extensiones": [".config", ".json"],    
 		"Rutas": 
 			[
-				"D:\\DBNeT-FE\\cl\\fe62sql\\webapps\\SE62",
-				"D:\\websuite50",
-				"D:\\AplicacionesWeb\\lce\\dbnetLCE",
-				"D:\\AplicacionesWeb\\lce\\dbnLCE",
-				"D:\\AplicacionesWeb\\lce48\\dbnetLCE",
-				"D:\\AplicacionesWeb\\lce48\\dbnLCE",
-				"D:\\AplicacionesWeb",
-				"E:\\GDTE\\gdteCL\\webapps\\GestionDTE",
-				"E:\\GDTE\\gdteCL\\WSS\\rsWssConsultaFEBHSura",
-				"E:\\GDTE\\gdteCL\\WSS\\wssSupplierDocCedEsta",
-				"E:\\GDTE\\gdteCL\\WSS\\wssSupplierNoReciFE"		
+				"D:\\xxxxxxxx\\cl\\fe62sql\\webapps\\xxxxxxx",
+				"D:\\websxxxxxxuite50",
+				"D:\\xxxxxx\\lce\\xxxxxx",
+				"D:\\xxxxxx\\lce\\xxxxxx",
+				"D:\\xxxxxxx\\lce48\\xxxxx",
+				"D:\\xxxxxxxx\\lce48\\xxxxxx",
+				"D:\\xxxxxxx",
+				"E:\\xxxxxx\\gdteCL\\webapps\\xxxxxx",
+				"E:\\xxxxxx\\gdteCL\\WSS\\xxxxxxx",
+				"E:\\xxxxxx\\gdteCL\\WSS\\xxxxxxx",
+				"E:\\GDTxxxxE\\gdteCL\\WSS\\xxxxxxxxx"		
 				
 			],
         "NombreBat":"IISCambio_uat_QA.bat"
 	},
     "ServiciosWindows":
     {
-        "IpMTA": "172.33.1.6",
+        "IpMTA": "172.33.1.0",
         "IpLocal": "172.33.1.70",
-        "Ruta": "D:\\DBNeT-FE\\cl\\fe62sql\\apps\\home\\bin",
+        "Ruta": "D:\\xxxxx\\cl\\xxxxx\\apps\\home\\bin",
         "Servicios":
         [
             {
-                "Nombre": "DBNetServiceMailOutboxNotifySB",
-                "Bat":"DBNetServiceMailOutboxNotifySB.bat"
+                "Nombre": "xxxxxxServiceMailOutboxNotifySB",
+                "Bat":"xxxxxServiceMailOutboxNotifySB.bat"
             },
             {
-                "Nombre": "DBNetMailInboxWS",
-                "Bat": "DBNetMailInboxWS.bat"
+                "Nombre": "xxxxxMailInboxWS",
+                "Bat": "xxxxxMailInboxWS.bat"
             },
             {
-                "Nombre": "DBNetDocuWS01",
+                "Nombre": "xxxxxxDocuWS01",
                 "Bat": "Wss_Documentos.bat"
             }
             
