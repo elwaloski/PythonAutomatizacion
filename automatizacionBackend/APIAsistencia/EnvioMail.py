@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 # Configura la información del remitente y destinatario
 remitente_email = "PruebaPythonAsistencia@hotmail.com"
 remitente_password = "Asado2023*"
-destinatario_email = "waldo.gonzalez@dbnetcorp.com"
+destinatario_email = "waldo.gonzalez@xxxxxxxx.com"
 # Configura el servidor SMTP de Outlook
 smtp_server = "smtp-mail.outlook.com"
 smtp_port = 587
