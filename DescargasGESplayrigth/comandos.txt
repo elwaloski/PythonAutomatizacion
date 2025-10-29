@@ -1,0 +1,8 @@
+python.exe -m pip install playwright
+python.exe -m playwright install
+python.exe -m playwright --version
+
+python.exe -m pip install --user playwright
+
+python -m playwright codegen
+python -m playwright codegen --channel=msedge https://www.google.com
