@@ -1,0 +1,40 @@
+CIRC1901-Cuadros(872000)_2016.xlsm
+CL-CI_MC-Cuadros(105000)_2016.xlsm
+CLCP-Cuadros(875000)_2021.xlsm
+IAS1-Cuadros (810000)_2024.xlsm
+IAS1-Estado de Cambio en el Patrimonio (610000)_2022.xlsm
+IAS1-Estado Res Función (310000)_2020_p.xlsm
+IAS1-Estado Res Integral (420000)_2022.xlsm
+IAS1-Estado Sit Financiera (210000)_2020.xlsm
+IAS1-Información General (110000)_2023.xlsm
+IAS10-Cuadros(815000)_2016.xlsm
+IAS12-Cuadros(835110)_2022.xlsm
+IAS16-Cuadros(822100)_2022.xlsm
+IAS19-Cuadros(834480)_2016.xlsm
+IAS2-Cuadros(826380)_2019.xlsm
+IAS20-Cuadros(831400)_2016.xlsm
+IAS21-Cuadros(842000)_2022.xlsm
+IAS23-Cuadros(836200)_2016.xlsm
+IAS24-Cuadros(818000)_2019.xlsm
+IAS33-Cuadros(838000)_2016.xlsm
+IAS36-Cuadros(832410)_2016.xlsm
+IAS37-Cuadros(827570)_2016.xlsm
+IAS38-Cuadros(823180)_2020.xlsm
+IAS40-Cuadros(825100)_2020.xlsm
+IAS41-Cuadros(824180)_2020.xlsm
+IAS7-Cuadros(851100)_2020.xlsm
+IAS7-Estado de Flujo Directo (510000)_2024.xlsm
+IAS8-Cuadros(811000)_2016.xlsm
+IFRS12-Cuadros(825700)_2022.xlsm
+IFRS13-Cuadros(823000)_2020.xlsm
+IFRS15-Cuadros(831150)_2019.xlsm
+IFRS16-Cuadros(832610)_2024.xlsm
+IFRS2-Cuadros(834120)_2022.xlsm
+IFRS3-Cuadros(817000)_2022.xlsm
+IFRS5-Cuadros(825900)_2019.xlsm
+IFRS6-Cuadros(822200)_2016.xlsm
+IFRS7-Cuadros(822400)_2021.xlsm
+IFRS8-Cuadros(871100)_2022.xlsm
+SIC27-Cuadros(832800)_2016.xlsm
+SIC29-Cuadros(832900)_2016.xlsm
+xls.zip
