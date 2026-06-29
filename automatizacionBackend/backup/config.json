@@ -1,0 +1,33 @@
+{
+    "container": "mariadb10",
+
+    "mysql": {
+        "user": "root",
+        "password": "root"
+    },
+
+    "backup": {
+        "folder": "D:\\Backups",
+        "compress": false,
+        "overwrite": true,
+        "keep_days": 30
+    },
+
+    "schedule": {
+        "enabled": true,
+        "check_every_seconds": 30,
+        "times": [
+            "02:00",
+            "14:00",
+            "20:00"
+        ]
+    },
+
+    "databases": [
+        "comercio",
+        "movaliz",
+        "mighvagh",
+        "misteriofit",
+        "bd_atlas"
+    ]
+}
